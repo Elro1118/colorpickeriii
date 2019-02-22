@@ -7,6 +7,41 @@ html {
 }
 
 body {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
   margin: 0;
   min-height: 100%;
+}
+
+.color-picker-section {
+  display: flex;
+  background: #7d1128;
+  border-radius: 1rem;
+}
+
+.box-section {
+  flex: 1;
+  padding: 1rem;
+  margin: 1rem 0.5rem 1rem 1rem;
+  border-radius: 1rem;
+}
+.ranges-section {
+  background: #346745;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  border-radius: 1rem;
+}
+
+.list-hsl {
+  background: #a1d186;
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem 1rem 1rem 0.5rem;
+  border-radius: 1rem;
 }
