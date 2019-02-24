@@ -5,13 +5,16 @@ class App extends Component {
     h: 80,
     s: 60,
     l: 20,
+    a: 100,
     lists: []
   }
 
   addColorToList = () => {
     this.setState({
       lists: this.state.lists.concat(
-        `hsl(${this.state.h},${this.state.s}%,${this.state.l}%)`
+        `hsla(${this.state.h},${this.state.s}%,${this.state.l}%,${
+          this.state.a
+        }%)`
       )
     })
   }
@@ -31,47 +34,74 @@ class App extends Component {
       l: event.target.value
     })
   }
+  changeValueA = event => {
+    this.setState({ a: event.target.value })
+  }
+
   render() {
     return (
       <div className="color-picker-section">
-        <div
-          className="box-section"
-          style={{
-            backgroundColor: `hsl(${this.state.h},${this.state.s}%,${
-              this.state.l
-            }%)`
-          }}
-        >
-          My Box
+        <div className="external-box-section">
+          <div
+            className="box-section"
+            style={{
+              backgroundColor: `hsla(${this.state.h},${this.state.s}%,${
+                this.state.l
+              }%, ${this.state.a}%)`
+            }}
+          />
+          <p className="hsla-section">
+            hsla({this.state.h},{this.state.s}%,{this.state.l}%,
+            {this.state.a}%)
+          </p>
         </div>
         <div className="ranges-section">
-          <p>
-            H{' '}
+          <div className="range-section">
+            <p>H</p>
             <input
               className="range-input"
+              min="0"
+              max="360"
               type="range"
               value={this.state.h}
               onChange={this.changeValueH}
             />
-          </p>
-          <p>
-            S{' '}
+            <p>{this.state.h}</p>
+          </div>
+          <div className="range-section">
+            <p>S</p>
             <input
               className="range-input"
               type="range"
               value={this.state.s}
               onChange={this.changeValueS}
             />
-          </p>
-          <p>
-            L{' '}
+            <p>{this.state.s}</p>
+          </div>
+          <div className="range-section">
+            <p>L</p>
             <input
               className="range-input"
+              min="0"
+              max="100"
               type="range"
               value={this.state.l}
               onChange={this.changeValueL}
             />
-          </p>
+            <p>{this.state.l}</p>
+          </div>
+          <div className="range-section">
+            <p>A </p>
+            <input
+              className="range-input"
+              min="0"
+              max="100"
+              type="range"
+              value={this.state.a}
+              onChange={this.changeValueA}
+            />
+            <p>{this.state.a}</p>
+          </div>
           <div>
             <button onClick={this.addColorToList}>Remember Color</button>
           </div>
@@ -81,7 +111,17 @@ class App extends Component {
           <h2> List of HSL </h2>
           <ul>
             {this.state.lists.map(color => {
-              return <li>{color}</li>
+              return (
+                <li>
+                  {color}
+                  <div
+                    className="little-box"
+                    style={{
+                      backgroundColor: `${color}`
+                    }}
+                  />
+                </li>
+              )
             })}
           </ul>
         </div>
