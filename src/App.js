@@ -115,13 +115,13 @@ class App extends Component {
               {this.state.lists.map(color => {
                 return (
                   <li>
-                    {color}
                     <div
                       className="little-box"
                       style={{
                         backgroundColor: `${color}`
                       }}
                     />
+                    &nbsp;{color}
                   </li>
                 )
               })}
